@@ -17,6 +17,7 @@ export default class TodosList extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleCreate.bind(this)}>
+                // refs are used to retrive the dom element, in this case input feild onSubmit
                 <input type="text" placeholder="What do I need to do?" ref="createInput" />
                 <button>Create</button>
                 {this.renderError()}
@@ -25,6 +26,7 @@ export default class TodosList extends React.Component {
     }
 
     handleCreate(event) {
+          // default behavior is to refresh the page onsubmit is clicked
           event.preventDefault();
 
           const createInput = this.refs.createInput;
@@ -38,6 +40,7 @@ export default class TodosList extends React.Component {
 
           this.setState({ error: null });
           this.props.createTask(task);
+          // this will empty the input value to empty string
           this.refs.createInput.value = '';
     }
 

@@ -10,6 +10,7 @@ export default class TodosListItem extends React.Component {
     }
 
     renderTaskSection() {
+        //  ES6 you can take properties so basically it's task = this.props.task ...
         const { task, isCompleted } = this.props;
 
         const taskStyle = {
@@ -41,13 +42,16 @@ export default class TodosListItem extends React.Component {
         if (this.state.isEditing) {
             return (
                 <td>
+                    // this deals with set state, and you have to .bind(this) to keep "this" about the set state
                     <button onClick={this.onSaveClick.bind(this)}>Save</button>
+                    // click-handler
                     <button onClick={this.onCancelClick.bind(this)}>Cancel</button>
                 </td>
             );
         }
 
         return (
+            // when it is not editing these buttons will show because of the editing state
             <td>
                 <button onClick={this.onEditClick.bind(this)}>Edit</button>
                 <button onClick={this.props.deleteTask.bind(this, this.props.task)}>Delete</button>
